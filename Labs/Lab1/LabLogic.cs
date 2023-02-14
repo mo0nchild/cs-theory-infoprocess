@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MathNet.Numerics.Distributions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Policy;
@@ -14,62 +16,83 @@ namespace TheoryInfoProcess.Labs.Lab1
     using MathNet = MathNet.Numerics.Distributions;
     public class LabLogic : System.Object
     {
-
         public static readonly System.Int32 N = 500, M = 10000;
         private static readonly Random RandomGenerator = new Random();
 
         public System.Int32 SegmentsCount { get; private set; } = default;
         public System.Int32 ExperimentsCount { get; private set; } = default;
-        public System.Int32 CalculatingTimeout { get; private set; } = 1;
 
         public LabLogic() : this(LabLogic.N, LabLogic.M) { }
         public LabLogic(int segmentsCount, int experimentsCount) : base()
         {
             (ExperimentsCount, SegmentsCount) = (experimentsCount, segmentsCount);
         }
-        public List<double> CalculateTask1(double a, double b)
+        public Dictionary<double, double> CalculateTask1(double a, double b)
         {
-            double d = (b - a) / this.SegmentsCount;
-            double[] f_array = new double[this.SegmentsCount];
+            var f_array = new double[this.SegmentsCount];
+            var d = (b - a) / this.SegmentsCount;
+
+            var range = Enumerable.Range(0, this.SegmentsCount)
+                .Select((e) => a + e * d).ToArray();
 
             for(int m = 0; m < this.ExperimentsCount; m++)
             {
                 double x = RandomValue(a, b);
-                int n = (int)((x - a) / (b - a) * this.SegmentsCount);
-                f_array[n] = f_array[n] + 1;
+                f_array[(int)((x - a) / (b - a) * this.SegmentsCount)] += 1;
             }
+            var result = new Dictionary<double, double>();
             for(int n = 0; n < this.SegmentsCount; n++)
             {
-                f_array[n] = f_array[n] / (this.ExperimentsCount * d); 
+                result.Add(range[n], f_array[n] / (this.ExperimentsCount * d));
             }
-            return f_array.ToList<double>();
+            return result;
 
             double RandomValue(double _a, double _b) 
                 => _a + (_b - _a) * LabLogic.RandomGenerator.NextDouble();
         }
 
-        public List<double> CalculateTask2()
+        public Dictionary<double, double> CalculateTask2()
         {
             double[] X = { 5, 25, 55, 7, 19, 21, 17 };
-            double[] P = { 0.01, 0.02, 0.02, 0.05, 0.3, 0.3, 0.3 };
 
-            var results = new List<double>();
+            var list = new Dictionary<double, int[]>()
+            {
+                [0.01] = new int[] { 5 }, [0.02] = new int[] { 25, 55 },
+                [0.05] = new int[] { 7 }, [0.3] = new int[] { 19, 21, 17 },
+            };
+            var results = new Dictionary<double, double>();
 
-            for (int i = 0; i < this.SegmentsCount; i++) results.Add(RandomValue());
-            return results;
+            for (int i = 0; i < this.ExperimentsCount; i++)
+            {
+                var rand = RandomValue();
+
+                if (results.ContainsKey(rand)) results[rand]++;
+                else results.Add(rand, 1);
+            }
+            return results.OrderBy((e) => e.Key)
+                .Select((e) => new KeyValuePair<double, double>(e.Key, e.Value / this.ExperimentsCount))
+                .ToDictionary((e) => e.Key, (e) => e.Value);
 
             double RandomValue()
             {
-                double e = LabLogic.RandomGenerator.NextDouble(), x_exit = X[X.Length - 1];
-                for (int i = 0; i < P.Length; i++)
+                double random_num = default, x_exit = default;
+                for (int i = 0; i < list.Count; i++)
                 {
-                    if (e < P[i]) { x_exit = X[i]; break; }
+                    if(i == 0) { random_num = LabLogic.RandomGenerator.NextDouble(); }
+
+                    var item = list.ElementAt<KeyValuePair<double, int[]>>(i);
+                    if (random_num < item.Key) 
+                    {
+                        var rand = LabLogic.RandomGenerator.Next(item.Value.Length);
+                        x_exit = item.Value[rand]; break; 
+                    }
+                    if (x_exit == default && i >= list.Count - 1) i = -1;
                 }
                 return x_exit;
             }
         }
 
-        public List<double> CalculateTask3(double a, double b, double std, double mean)
+        public Dictionary<double, double> CalculateTask3(double a, double b, double std, double mean)
         {
             var dist_random = this.CalculateTask1(a, b);
 
@@ -86,9 +109,9 @@ namespace TheoryInfoProcess.Labs.Lab1
             for (int n = 0; n < this.SegmentsCount; n++)
             {
                 f_array[n] = f_array[n] / (this.ExperimentsCount * d);
-                f_array[n] += dist_random[n];
+                dist_random[dist_random.ElementAt(n).Key] += f_array[n];
             }
-            return f_array.ToList<double>();
+            return dist_random;
 
             double GaussRandom()
             {

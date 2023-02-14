@@ -57,7 +57,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.exp3_color_button = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.segments2_numeric = new System.Windows.Forms.NumericUpDown();
+            this.experement2_numeric = new System.Windows.Forms.NumericUpDown();
             this.calctask2_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.graph_chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -77,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.exp1_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.segments2_numeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.experement2_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart2)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exp3_numeric)).BeginInit();
@@ -248,7 +248,7 @@
             this.exp2_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exp2_numeric.Location = new System.Drawing.Point(18, 370);
             this.exp2_numeric.Maximum = new decimal(new int[] {
-            10000,
+            50000,
             0,
             0,
             0});
@@ -273,7 +273,7 @@
             this.exp1_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exp1_numeric.Location = new System.Drawing.Point(18, 316);
             this.exp1_numeric.Maximum = new decimal(new int[] {
-            10000,
+            50000,
             0,
             0,
             0});
@@ -323,7 +323,7 @@
             // 
             this.tabPage2.Controls.Add(this.exp3_color_button);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.segments2_numeric);
+            this.tabPage2.Controls.Add(this.experement2_numeric);
             this.tabPage2.Controls.Add(this.calctask2_button);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.graph_chart2);
@@ -350,30 +350,30 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(15, 298);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 15);
+            this.label8.Size = new System.Drawing.Size(138, 15);
             this.label8.TabIndex = 17;
-            this.label8.Text = "Число отрезков:";
+            this.label8.Text = "Число эксперементов:";
             // 
-            // segments2_numeric
+            // experement2_numeric
             // 
-            this.segments2_numeric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.segments2_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.segments2_numeric.Location = new System.Drawing.Point(18, 316);
-            this.segments2_numeric.Maximum = new decimal(new int[] {
+            this.experement2_numeric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.experement2_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.experement2_numeric.Location = new System.Drawing.Point(18, 316);
+            this.experement2_numeric.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.segments2_numeric.Minimum = new decimal(new int[] {
+            this.experement2_numeric.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.segments2_numeric.Name = "segments2_numeric";
-            this.segments2_numeric.Size = new System.Drawing.Size(122, 26);
-            this.segments2_numeric.TabIndex = 16;
-            this.segments2_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.segments2_numeric.Value = new decimal(new int[] {
+            this.experement2_numeric.Name = "experement2_numeric";
+            this.experement2_numeric.Size = new System.Drawing.Size(122, 26);
+            this.experement2_numeric.TabIndex = 16;
+            this.experement2_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.experement2_numeric.Value = new decimal(new int[] {
             500,
             0,
             0,
@@ -569,7 +569,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.segments2_numeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.experement2_numeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -605,7 +605,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart graph_chart2;
         private System.Windows.Forms.Button calctask2_button;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown segments2_numeric;
+        private System.Windows.Forms.NumericUpDown experement2_numeric;
         private System.Windows.Forms.Button exp3_color_button;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataVisualization.Charting.Chart graph_chart3;

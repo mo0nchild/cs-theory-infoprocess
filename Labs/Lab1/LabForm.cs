@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TheoryInfoProcess.Labs.Lab1
 {
@@ -18,7 +19,6 @@ namespace TheoryInfoProcess.Labs.Lab1
         public LabForm() : base()
         {
             this.InitializeComponent();
-
             this.exp1_textbox.Text = "График 1"; this.exp2_textbox.Text = "График 2";
 
             this.exp1_color_button.Click += new EventHandler(ChangeColorHandler);
@@ -50,21 +50,26 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart1.Series.Clear();
             var series1 = new Charting::Series(this.exp1_textbox.Text)
             {
-                ChartType = Charting::SeriesChartType.FastLine, BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
                 Color = this.exp1_color_button.BackColor, 
             };
             var series2 = new Charting::Series(this.exp2_textbox.Text)
             {
-                ChartType = Charting::SeriesChartType.FastLine, BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
                 Color = this.exp2_color_button.BackColor,
             };
 
             int M1 = (int)this.exp1_numeric.Value, M2 = (int)this.exp2_numeric.Value,
                 N = (int)this.segments1_numeric.Value;
 
-            foreach (var item in new LabLogic(N, M1).CalculateTask1(-2, 7)) series1.Points.Add(item);
-            foreach (var item in new LabLogic(N, M2).CalculateTask1(-2, 7)) series2.Points.Add(item);
-
+            foreach (var item in new LabLogic(N, M1).CalculateTask1(-2, 7))
+            {
+                series1.Points.Add(new Charting::DataPoint(item.Key, item.Value));
+            }
+            foreach (var item in new LabLogic(N, M2).CalculateTask1(-2, 7))
+            {
+                series2.Points.Add(new Charting::DataPoint(item.Key, item.Value));
+            }
             this.graph_chart1.Series.Add(series1);
             this.graph_chart1.Series.Add(series2);
         }
@@ -74,13 +79,12 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart2.Series.Clear();
             var series = new Charting::Series("График")
             {
-                ChartType = Charting::SeriesChartType.FastLine,
-                BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
                 Color = this.exp3_color_button.BackColor,
             };
-            foreach (var item in new LabLogic((int)this.segments2_numeric.Value, 0).CalculateTask2())
+            foreach (var item in new LabLogic(10, (int)this.experement2_numeric.Value).CalculateTask2())
             {
-                series.Points.Add(item);
+                series.Points.Add(new DataPoint(item.Key, item.Value));
             }
             this.graph_chart2.Series.Add(series);
         }
@@ -90,15 +94,15 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart3.Series.Clear();
             var series = new Charting::Series("График")
             {
-                ChartType = Charting::SeriesChartType.FastLine,
+                ChartType = Charting::SeriesChartType.StackedColumn,
                 BorderWidth = LabForm.GraphWidth,
                 Color = this.exp4_color_button.BackColor,
             };
 
             int N = (int)this.segments3_numeric.Value, M = (int)this.exp3_numeric.Value;
-            foreach (var item in new LabLogic(N, M).CalculateTask3(-5, 7, 1, 2))
+            foreach (var item in new LabLogic(N, M).CalculateTask3(5, 7, 1, 2))
             {
-                series.Points.Add(item);
+                series.Points.Add(new DataPoint(item.Key, item.Value));
             }
             this.graph_chart3.Series.Add(series);
         }
