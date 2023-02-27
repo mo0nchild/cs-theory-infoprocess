@@ -14,10 +14,9 @@ using System.Windows.Forms;
 namespace TheoryInfoProcess.Labs.Lab1
 {
     using MathNet = MathNet.Numerics.Distributions;
-    public class LabLogic : System.Object
+    public class LabLogic : LabsHelper
     {
         public static readonly System.Int32 N = 500, M = 10000;
-        private static readonly Random RandomGenerator = new Random();
 
         public System.Int32 SegmentsCount { get; private set; } = default;
         public System.Int32 ExperimentsCount { get; private set; } = default;
@@ -101,7 +100,7 @@ namespace TheoryInfoProcess.Labs.Lab1
 
             for (int m = 0; m < this.ExperimentsCount; m++)
             {
-                var x = GaussRandom();
+                var x = GaussRandom<object>(mean, std, (val) => { return (val <= b && val >= a); });
 
                 int n = (int)((x - a) / (b - a) * this.SegmentsCount);
                 f_array[n] = f_array[n] + 1;
@@ -113,16 +112,7 @@ namespace TheoryInfoProcess.Labs.Lab1
             }
             return dist_random;
 
-            double GaussRandom()
-            {
-                double retval = default;
-                while (true)
-                {
-                    retval = MathNet::Normal.Sample(LabLogic.RandomGenerator, mean, std);
-                    if (retval <= b && retval >= a) { break; }
-                }
-                return retval;
-            }
+            
         }
     }
 }

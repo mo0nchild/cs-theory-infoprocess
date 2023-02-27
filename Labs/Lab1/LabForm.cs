@@ -12,11 +12,11 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace TheoryInfoProcess.Labs.Lab1
 {
     using Charting = System.Windows.Forms.DataVisualization.Charting;
-    public partial class LabForm : Form
+    public partial class Lab2Form : Form
     {
         private static readonly System.Int32 GraphWidth = 2;
 
-        public LabForm() : base()
+        public Lab2Form() : base()
         {
             this.InitializeComponent();
             this.exp1_textbox.Text = "График 1"; this.exp2_textbox.Text = "График 2";
@@ -50,12 +50,12 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart1.Series.Clear();
             var series1 = new Charting::Series(this.exp1_textbox.Text)
             {
-                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.FastLine, BorderWidth = Lab2Form.GraphWidth,
                 Color = this.exp1_color_button.BackColor, 
             };
             var series2 = new Charting::Series(this.exp2_textbox.Text)
             {
-                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.FastLine, BorderWidth = Lab2Form.GraphWidth,
                 Color = this.exp2_color_button.BackColor,
             };
 
@@ -79,7 +79,7 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart2.Series.Clear();
             var series = new Charting::Series("График")
             {
-                ChartType = Charting::SeriesChartType.Column, BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.Column, BorderWidth = Lab2Form.GraphWidth,
                 Color = this.exp3_color_button.BackColor,
             };
             foreach (var item in new LabLogic(10, (int)this.experement2_numeric.Value).CalculateTask2())
@@ -94,8 +94,8 @@ namespace TheoryInfoProcess.Labs.Lab1
             this.graph_chart3.Series.Clear();
             var series = new Charting::Series("График")
             {
-                ChartType = Charting::SeriesChartType.StackedColumn,
-                BorderWidth = LabForm.GraphWidth,
+                ChartType = Charting::SeriesChartType.FastLine,
+                BorderWidth = Lab2Form.GraphWidth,
                 Color = this.exp4_color_button.BackColor,
             };
 
