@@ -45,9 +45,11 @@
             this.calctask1_button = new System.Windows.Forms.Button();
             this.graph_chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.exp3_color_button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.exp2_textbox = new System.Windows.Forms.TextBox();
+            this.exp2_color_button = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.experement2_numeric = new System.Windows.Forms.NumericUpDown();
+            this.segments2_numeric = new System.Windows.Forms.NumericUpDown();
             this.calctask2_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.graph_chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -56,7 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.segments1_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.experement2_numeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.segments2_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,9 +125,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(195, 298);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 15);
+            this.label3.Size = new System.Drawing.Size(88, 15);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Имя графика 1:";
+            this.label3.Text = "Имя графика:";
             // 
             // segments1_numeric
             // 
@@ -190,9 +192,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.exp3_color_button);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.exp2_textbox);
+            this.tabPage2.Controls.Add(this.exp2_color_button);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.experement2_numeric);
+            this.tabPage2.Controls.Add(this.segments2_numeric);
             this.tabPage2.Controls.Add(this.calctask2_button);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.graph_chart2);
@@ -204,14 +208,33 @@
             this.tabPage2.Text = "Задание 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // exp3_color_button
+            // label1
             // 
-            this.exp3_color_button.BackColor = System.Drawing.Color.Tomato;
-            this.exp3_color_button.Location = new System.Drawing.Point(158, 316);
-            this.exp3_color_button.Name = "exp3_color_button";
-            this.exp3_color_button.Size = new System.Drawing.Size(31, 26);
-            this.exp3_color_button.TabIndex = 18;
-            this.exp3_color_button.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(193, 298);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 15);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Имя графика:";
+            // 
+            // exp2_textbox
+            // 
+            this.exp2_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.exp2_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exp2_textbox.Location = new System.Drawing.Point(198, 316);
+            this.exp2_textbox.Name = "exp2_textbox";
+            this.exp2_textbox.Size = new System.Drawing.Size(126, 26);
+            this.exp2_textbox.TabIndex = 19;
+            // 
+            // exp2_color_button
+            // 
+            this.exp2_color_button.BackColor = System.Drawing.Color.Tomato;
+            this.exp2_color_button.Location = new System.Drawing.Point(352, 316);
+            this.exp2_color_button.Name = "exp2_color_button";
+            this.exp2_color_button.Size = new System.Drawing.Size(31, 26);
+            this.exp2_color_button.TabIndex = 18;
+            this.exp2_color_button.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -223,26 +246,26 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Число эксперементов:";
             // 
-            // experement2_numeric
+            // segments2_numeric
             // 
-            this.experement2_numeric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.experement2_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.experement2_numeric.Location = new System.Drawing.Point(18, 316);
-            this.experement2_numeric.Maximum = new decimal(new int[] {
+            this.segments2_numeric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.segments2_numeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.segments2_numeric.Location = new System.Drawing.Point(18, 316);
+            this.segments2_numeric.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.experement2_numeric.Minimum = new decimal(new int[] {
+            this.segments2_numeric.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.experement2_numeric.Name = "experement2_numeric";
-            this.experement2_numeric.Size = new System.Drawing.Size(122, 26);
-            this.experement2_numeric.TabIndex = 16;
-            this.experement2_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.experement2_numeric.Value = new decimal(new int[] {
+            this.segments2_numeric.Name = "segments2_numeric";
+            this.segments2_numeric.Size = new System.Drawing.Size(122, 26);
+            this.segments2_numeric.TabIndex = 16;
+            this.segments2_numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.segments2_numeric.Value = new decimal(new int[] {
             500,
             0,
             0,
@@ -302,7 +325,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.experement2_numeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.segments2_numeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graph_chart2)).EndInit();
             this.ResumeLayout(false);
 
@@ -323,9 +346,11 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart graph_chart2;
         private System.Windows.Forms.Button calctask2_button;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown experement2_numeric;
-        private System.Windows.Forms.Button exp3_color_button;
+        private System.Windows.Forms.NumericUpDown segments2_numeric;
+        private System.Windows.Forms.Button exp2_color_button;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown segments1_numeric;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox exp2_textbox;
     }
 }

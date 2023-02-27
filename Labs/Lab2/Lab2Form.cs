@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,7 @@ namespace TheoryInfoProcess.Labs.Lab2
         public Lab2Form() : base()
         {
             this.InitializeComponent();
-            this.exp1_textbox.Text = "График 1";
+            this.exp1_textbox.Text = "График 1"; this.exp2_textbox.Text = "График 2";
 
             this.exp1_color_button.Click += new EventHandler(ChangeColorHandler);
 
@@ -49,7 +50,7 @@ namespace TheoryInfoProcess.Labs.Lab2
                 Color = this.exp1_color_button.BackColor, 
             };
             var result = (this.Logic = new Lab2Logic((int)this.segments1_numeric.Value))
-                .CalculateTask1(2, 5, 0.95);
+                .CalculateTask1(2, 5, Math.Log(0.95));
 
             foreach(var item in result)
             {
@@ -62,13 +63,18 @@ namespace TheoryInfoProcess.Labs.Lab2
         private void CalculateTask2Handler(object sender, EventArgs args)
         {
             this.graph_chart2.Series.Clear();
-            var series = new Charting::Series("График")
+            var series2 = new Charting::Series("График")
             {
-                ChartType = Charting::SeriesChartType.Column, BorderWidth = Lab2Form.GraphWidth,
-                Color = this.exp3_color_button.BackColor,
+                ChartType = Charting::SeriesChartType.FastLine, BorderWidth = Lab2Form.GraphWidth,
+                Color = this.exp2_color_button.BackColor,
             };
 
-            this.graph_chart2.Series.Add(series);
+            var result = (this.Logic = new Lab2Logic((int)this.segments2_numeric.Value))
+               .CalculateTask2(1);
+
+            foreach (var item in result) series2.Points.Add(item);
+
+            this.graph_chart2.Series.Add(series2);
         }
     }
 }
