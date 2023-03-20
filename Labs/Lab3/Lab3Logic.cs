@@ -11,8 +11,6 @@ namespace TheoryInfoProcess.Labs.Lab3
     using MH = MathNet.Numerics.Distributions;
     public sealed class Lab3Logic : LabsHelper
     {
-        public const System.Int32 N = 50, M = 20, MM = 15;
-
         public Lab3Logic() : base() { }
 
         private double Primitive(double x)
@@ -60,42 +58,50 @@ namespace TheoryInfoProcess.Labs.Lab3
             return result;
         }
 
-        public List<double> CalculateTask3()
+        public Dictionary<double, double> CalculateTask3(double porog, int MM, int N)
         {
             double[] s = new double[N], k = new double[N], x = new double[N];
 
-            for(int i = 0; i < N; i++) s[i] =  Math.Sin(-2 * Math.PI * i / N);
+            // -----------------------------------------------------------------
+            for (int i = 0; i < N; i++) s[i] = Math.Sin(-2.0 * Math.PI * i / N);
             for (int i = 0; i < N; i++) k[i] = s[N - 1 - i];
 
-            var disp = default(double);
-            for(int i = 0; i < 200; i++)
-            {
-                for (int j = 0; j < N; j++) x[j] = this.GaussRandom(0, 1, (_) => true);
-                var z = Solg();
-                disp += z * z;
-            }
-            disp /= 200.0;
+            //var disp = default(double);
+            //for(int i = 0; i < 200; i++)
+            //{
+            //    for (int j = 0; j < N; j++) x[j] = this.GaussRandom(0, 1, (_) => true);
+            //    var z = Solg();
+            //    disp += z * z;
+            //}
+            //disp /= 200.0;
 
-            double[] mass_porog = new double[M], veroa = new double[M];
-            for (int i = 0; i < M; i++) mass_porog[i] = Math.Sqrt(disp) * (1.0 + 0.1 * i);
+            //double[] mass_porog = new double[M], veroa = new double[M];
+            //for (int i = 0; i < M; i++) mass_porog[i] = Math.Sqrt(disp) * (1.0 + 0.1 * i);
 
-            for(int n = 0; n < 30000L; n++)
-            {
-                for(int j = 0; j < N; j++) x[j] = this.GaussRandom(0, 1, (_) => true);
-                var z = Solg();
-                for(int j = 0; j < M; j++)
-                {
-                    if (z >= mass_porog[j]) veroa[j]++;
-                }
-            }
-            for (int j = 0; j < M; j++) veroa[j] /= 30000.0;
+            //for(int n = 0; n < 30000L; n++)
+            //{
+            //    for(int j = 0; j < N; j++) x[j] = this.GaussRandom(0, 1, (_) => true);
+            //    var z = Solg();
+            //    for(int j = 0; j < M; j++)
+            //    {
+            //        if (z >= mass_porog[j]) veroa[j]++;
+            //    }
+            //}
+            //for (int j = 0; j < M; j++) veroa[j] /= 30000.0;
 
+            var result = new Dictionary<double, double>();
+            var d_prav = new double[MM];
             for(int n = 0; n < MM; n++)
             {
-
+                var A = 0.2 + 0.05 * n;
+                for(int j = 0; j < 200; j++)
+                {
+                    for (int i = 0; i < N; i++) x[i] = this.GaussRandom(0, 1, (_) => true) + A * s[i];
+                    var z = Solg();
+                    if (z >= porog) d_prav[n] += 1.0/ 200.0;
+                }
+                result.Add(A, d_prav[n]);
             }
-
-
             double Solg()
             {
                 var sym = default(double);
@@ -103,7 +109,7 @@ namespace TheoryInfoProcess.Labs.Lab3
                 return sym;
             }
 
-            return default;
+            return result;
         }
     }
 }

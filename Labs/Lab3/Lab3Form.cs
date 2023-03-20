@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +29,7 @@ namespace TheoryInfoProcess.Labs.Lab3
 
             this.calculate1_button.Click += new EventHandler(Calculate1ButtonClick);
             this.calculate2_button.Click += new EventHandler(Calculate2ButtonClick);
-            this.calculate2_button.Click += new EventHandler(Calculate3ButtonClick);
+            this.calculate3_button.Click += new EventHandler(Calculate3ButtonClick);
 
             this.Calculate1ButtonClick(this, EventArgs.Empty);
             this.Calculate2ButtonClick(this, EventArgs.Empty);
@@ -88,10 +89,11 @@ namespace TheoryInfoProcess.Labs.Lab3
                 ChartType = Charting::SeriesChartType.Spline,
                 Color = this.chartcolor3_button.BackColor, BorderWidth = 2
             };
-            //foreach (var item in this.LabLogic.CalculateTask3())
-            //{
-            //    series.Points.Add();
-            //}
+            foreach (var item in this.LabLogic.CalculateTask3(0.95, (int)this.numericUpDown3.Value,
+                (int)this.numericUpDown4.Value))
+            {
+                series.Points.Add(new Charting.DataPoint(item.Key, item.Value));
+            }
             this.graph_chart3.Series.Add(series);
         }
     }
