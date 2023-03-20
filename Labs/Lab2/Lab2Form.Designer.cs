@@ -317,7 +317,7 @@
             this.MaximumSize = new System.Drawing.Size(680, 500);
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "Lab2Form";
-            this.Text = "Лабораторная работа 1";
+            this.Text = "Лабораторная работа 2";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

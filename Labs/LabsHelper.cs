@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace TheoryInfoProcess.Labs
 {
     using MathNet = MathNet.Numerics.Distributions;
-
     public class LabsHelper : System.Object
     {
         protected static readonly System.Random RandomGenerator = new Random();
