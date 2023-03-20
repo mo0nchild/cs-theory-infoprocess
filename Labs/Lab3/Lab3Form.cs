@@ -28,6 +28,7 @@ namespace TheoryInfoProcess.Labs.Lab3
 
             this.calculate1_button.Click += new EventHandler(Calculate1ButtonClick);
             this.calculate2_button.Click += new EventHandler(Calculate2ButtonClick);
+            this.calculate2_button.Click += new EventHandler(Calculate3ButtonClick);
 
             this.Calculate1ButtonClick(this, EventArgs.Empty);
             this.Calculate2ButtonClick(this, EventArgs.Empty);
@@ -64,8 +65,7 @@ namespace TheoryInfoProcess.Labs.Lab3
             var series = new Charting::Series(this.chart2_textbox.Text)
             {
                 ChartType = Charting::SeriesChartType.Spline,
-                Color = this.chartcolor2_button.BackColor,
-                BorderWidth = 2
+                Color = this.chartcolor2_button.BackColor, BorderWidth = 2
             };
             try {
                 foreach (var item in this.LabLogic.CalculateTask2(0, 0.5, (int)this.numericUpDown2.Value,
@@ -75,7 +75,9 @@ namespace TheoryInfoProcess.Labs.Lab3
                 }
                 this.graph_chart2.Series.Add(series);
             }
-            catch(System.Exception error) { MessageBox.Show(error.Message); }
+            catch(System.Exception error) { 
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+            }
         }
 
         private void Calculate3ButtonClick(object sender, EventArgs args)
@@ -84,13 +86,12 @@ namespace TheoryInfoProcess.Labs.Lab3
             var series = new Charting::Series(this.chart3_textbox.Text)
             {
                 ChartType = Charting::SeriesChartType.Spline,
-                Color = this.chartcolor3_button.BackColor,
-                BorderWidth = 2
+                Color = this.chartcolor3_button.BackColor, BorderWidth = 2
             };
-            foreach (var item in this.LabLogic.CalculateTask3())
-            {
-                series.Points.Add();
-            }
+            //foreach (var item in this.LabLogic.CalculateTask3())
+            //{
+            //    series.Points.Add();
+            //}
             this.graph_chart3.Series.Add(series);
         }
     }
