@@ -20,8 +20,6 @@ namespace TheoryInfoProcess.Labs.Lab3
         public Lab3Form() : base()
         {
             this.InitializeComponent();
-            this.chart1_textbox.Text = "График 1"; this.chart2_textbox.Text = "График 2";
-            this.chart3_textbox.Text = "График 3";
 
             this.chartcolor1_button.Click += new EventHandler(ChangeColorHandler);
             this.chartcolor2_button.Click += new EventHandler(ChangeColorHandler);

@@ -16,7 +16,7 @@ namespace TheoryInfoProcess
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Labs.Lab3.Lab3Form());
+            Application.Run(new Labs.Lab4.Lab4Form());
         }
     }
 }
