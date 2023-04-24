@@ -16,6 +16,12 @@ namespace TheoryInfoProcess.Labs
         public virtual double GaussRandom(double mean, double std, Predicate<double> state) 
             => this.GaussRandom<object>(mean, std, state);
 
+        protected virtual double Factorial(double x)
+        {
+            if (x == 1) return 1;
+            return this.Factorial(x - 1) * x;
+        }
+
         public virtual double GaussRandom<T>(double mean, double std, Predicate<double> state, 
             T param = default(T)) where T : class
         {
