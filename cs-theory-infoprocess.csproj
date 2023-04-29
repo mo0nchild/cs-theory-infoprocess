@@ -96,6 +96,12 @@
     <Compile Include="Labs\Lab6\Lab6Form.Designer.cs">
       <DependentUpon>Lab6Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Labs\Lab7\Lab7Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Labs\Lab7\Lab7Form.Designer.cs">
+      <DependentUpon>Lab7Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Labs\LabsHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Labs\Lab6\Lab6Form.resx">
       <DependentUpon>Lab6Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Labs\Lab7\Lab7Form.resx">
+      <DependentUpon>Lab7Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
